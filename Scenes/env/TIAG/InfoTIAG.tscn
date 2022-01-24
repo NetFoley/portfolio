@@ -1,0 +1,100 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Scenes/env/PL/InfoBlock.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/0x72_DungeonTilesetII_v1.4.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/env/Myndraine-webfont.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Scenes/env/TIAG/InfoTIAG.gd" type="Script" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 128, 64, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 144, 64, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 160, 64, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 176, 64, 16, 32 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:custom_fonts/font:resource_path")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "" ]
+}
+
+[sub_resource type="DynamicFont" id=8]
+size = 24
+font_data = ExtResource( 3 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 106.5, 71.75 )
+
+[node name="InfoTIAG" instance=ExtResource( 1 )]
+position = Vector2( 0, 12 )
+script = ExtResource( 4 )
+
+[node name="AnimatedSprite" parent="." index="0"]
+position = Vector2( 0, -12 )
+scale = Vector2( 1, 1 )
+frames = SubResource( 5 )
+frame = 1
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( 0.5, -2.5 )
+
+[node name="RichTextLabel" parent="." index="3"]
+margin_bottom = 65.0
+bbcode_text = ""
+text = ""
+fit_content_height = false
+
+[node name="AnimationPlayer" parent="RichTextLabel" index="2"]
+anims/RESET = SubResource( 7 )
+
+[node name="Label" type="Label" parent="RichTextLabel" index="4"]
+margin_left = 30.0
+margin_top = 7.50002
+margin_right = 452.0
+margin_bottom = 129.5
+custom_fonts/font = SubResource( 8 )
+text = "There is a Game
+2021
+Genre : Narratif et Puzzle
+Concepte et développement sur 
+Unreal Engine 4 ( C++ )"
+align = 1
+valign = 3
+percent_visible = 0.0
+lines_skipped = 2
+max_lines_visible = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="seeArea" type="Area2D" parent="." index="5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="seeArea" index="0"]
+position = Vector2( 106.5, -0.25 )
+shape = SubResource( 9 )

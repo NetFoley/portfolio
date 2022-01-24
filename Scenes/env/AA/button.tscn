@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scenes/env/Object.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/0x72_DungeonTilesetII_v1.4.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/env/AA/button.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/env/AA/Idle.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/env/AA/Move.gd" type="Script" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 16, 192, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 192, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 2 ) ],
+"loop": true,
+"name": "Activated",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 4, 3 )
+
+[node name="Button" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="AnimatedSprite" parent="." index="0"]
+position = Vector2( 0, 13 )
+scale = Vector2( 0.8, 0.775 )
+frames = SubResource( 3 )
+frame = 0
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = null
+
+[node name="Idle" parent="StateMachine" index="0"]
+script = ExtResource( 4 )
+
+[node name="Move" parent="StateMachine" index="1"]
+script = ExtResource( 5 )
+
+[node name="Area2D" type="Area2D" parent="." index="3"]
+position = Vector2( 0, 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}

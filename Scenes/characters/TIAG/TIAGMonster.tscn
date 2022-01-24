@@ -1,0 +1,107 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://Scenes/characters/NPC.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/monsterSheet.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/characters/TIAG/TIAGMonster.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/characters/TIAG/goingTo.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/characters/TIAG/waiting.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/characters/TIAG/catching.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/characters/TIAG/BehaviorTree.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/characters/TIAG/Move.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/characters/TIAG/movingAround.gd" type="Script" id=9]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 96, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 128, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 160, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 2 )
+region = Rect2( 192, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 2 )
+region = Rect2( 224, 0, 32, 48 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 9.31
+}, {
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"loop": true,
+"name": "Move",
+"speed": 11.27
+} ]
+
+[sub_resource type="CircleShape2D" id=10]
+radius = 109.018
+
+[sub_resource type="CircleShape2D" id=11]
+radius = 11.0
+
+[node name="TIAGMonster" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+wanderRange = 80
+
+[node name="AnimatedSprite" parent="." index="0"]
+position = Vector2( 0, -16 )
+frames = SubResource( 5 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = null
+
+[node name="Move" parent="StateMachine" index="1"]
+script = ExtResource( 8 )
+
+[node name="BehaviorTree" parent="." index="3"]
+script = ExtResource( 7 )
+chaseDistance = 150
+
+[node name="waiting" parent="BehaviorTree" index="0"]
+script = ExtResource( 5 )
+
+[node name="goingTo" parent="BehaviorTree" index="1"]
+script = ExtResource( 4 )
+
+[node name="catching" type="Node" parent="BehaviorTree" index="2"]
+script = ExtResource( 6 )
+
+[node name="movingAround" type="Node" parent="BehaviorTree" index="3"]
+script = ExtResource( 9 )
+
+[node name="Timer" type="Timer" parent="BehaviorTree" index="4"]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Area2D" type="Area2D" parent="." index="4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource( 10 )
+
+[node name="catchArea" type="Area2D" parent="." index="5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="catchArea" index="0"]
+shape = SubResource( 11 )

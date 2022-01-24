@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/characters/Character.tscn" type="PackedScene" id=2]
+[ext_resource path="res://StateMachine/State.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/characters/NPC.gd" type="Script" id=5]
+[ext_resource path="res://StateMachine/StateMachine.gd" type="Script" id=14]
+
+[node name="NPC" instance=ExtResource( 2 )]
+script = ExtResource( 5 )
+
+[node name="AnimatedSprite" parent="." index="0"]
+frame = 1
+
+[node name="BehaviorTree" type="Node" parent="." index="3"]
+script = ExtResource( 14 )
+
+[node name="waiting" type="Node" parent="BehaviorTree" index="0"]
+script = ExtResource( 4 )
+
+[node name="goingTo" type="Node" parent="BehaviorTree" index="1"]
+script = ExtResource( 4 )
