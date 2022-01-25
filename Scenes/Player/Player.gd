@@ -65,7 +65,6 @@ func _physics_process(_delta: float) -> void:
 			var viewSize = get_viewport().get_size()
 			var mousePos = pos + get_viewport().get_mouse_position() - viewSize/2
 			var dist = abs(abs(mousePos.x-pos.x) + abs(mousePos.y - pos.y))
-			var mouseDir = mousePos - pos 
 			set_direction(Vector2(mousePos - pos))
 			if dist < 45:
 				set_direction(Vector2.ZERO)

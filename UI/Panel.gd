@@ -23,8 +23,6 @@ var __ = connect("gui_input", self, "_on_gui_input")
 #### SIGNAL RESPONSES ####
 func _on_gui_input(event) -> void:
 	if event is InputEventMouseButton:
-		
 		if event.is_action_pressed("move"):
-			
-			OS.shell_open("https://vfonderflick.wixsite.com/work")
+			var __ = OS.shell_open("https://vfonderflick.wixsite.com/work")
 			print("link")
