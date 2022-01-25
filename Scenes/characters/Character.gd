@@ -129,7 +129,6 @@ func _ready() -> void:
 	
 	#__ = animated_sprite.connect("animation_finished", self, "_on_animation_finished")
 	
-	print("Character is ready")
 
 func _physics_process(_delta: float) -> void:
 	compute_velocity()

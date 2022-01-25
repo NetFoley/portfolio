@@ -40,11 +40,9 @@ func _on_catchArea_body_entered(body) -> void:
 	if body is Player:
 		behaviorTree.caught()
 
-
 func _on_monsterArea_body_entered(body) -> void:
 	if body is Player:
 		behaviorTree.player = body
-
 
 func _on_monsterArea_body_exited(body) -> void:
 	if body is Player:

@@ -18,12 +18,12 @@ animations = [ {
 "frames": [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 1 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "Idle",
-"speed": 5.0
+"speed": 5.64
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "Move",
-"speed": 5.0
+"speed": 8.69
 } ]
 
 [sub_resource type="CircleShape2D" id=2]
@@ -37,7 +37,6 @@ max_speed = 50.0
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

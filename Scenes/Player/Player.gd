@@ -18,6 +18,8 @@ var mouseDown : int = 0
 var canMove : bool = true
 var caught : bool = false
 var canBeHit : bool = true
+var nbDead : int = 0
+var nbCaught : int = 0
 
 #### ACCESSORS ####
 
@@ -30,6 +32,9 @@ func setCaught() -> void:
 	animPlayer.play("caught")
 	caught = true
 	canMove = false
+	nbCaught = nbCaught + 1
+	if nbCaught == 2:
+		EVENTS.emit_signal("pop", "Achievement ! \nCarni Vore")
 
 func player_free() -> void:
 	emit_signal("player_free")
@@ -44,32 +49,42 @@ func playDead() -> void:
 	animPlayer.play("dead")
 	canMove = false
 	emit_signal("player_die")
+	nbDead = nbDead + 1
+	if nbDead == 5:
+		EVENTS.emit_signal("pop", "Achievement ! \nPas ma guerre")
 
 func _physics_process(_delta: float) -> void:
 	
 	if canMove:
 		if !mouseDown:
-			set_direction(Vector2(dirRight - dirLeft, dirDown - dirUp))
+			var newDir = Vector2(dirRight - dirLeft, dirDown - dirUp)
+			set_direction(newDir)
+			
 		else:
 			var pos = Vector2(transform.get_origin().x, transform.get_origin().y)
 			var viewSize = get_viewport().get_size()
 			var mousePos = pos + get_viewport().get_mouse_position() - viewSize/2
 			var dist = abs(abs(mousePos.x-pos.x) + abs(mousePos.y - pos.y))
+			var mouseDir = mousePos - pos 
 			set_direction(Vector2(mousePos - pos))
 			if dist < 45:
 				set_direction(Vector2.ZERO)
 	else:
 		set_direction(Vector2.ZERO)
+		
+		if caught and (mouseDown or Vector2(dirRight - dirLeft, dirDown - dirUp) != Vector2.ZERO):
+			animPlayer.play("shaking")
+	
 
 
 
 #### VIRTUALS ####
 
 #### LOGIC ####
+func activate() -> void:
+	print("wow")
 
 func _input(event: InputEvent) -> void:
-	if caught:
-		animPlayer.play("shaking")
 	if !event is InputEventKey:
 		if !event is InputEventMouseButton:
 			return

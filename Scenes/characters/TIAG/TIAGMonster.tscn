@@ -10,22 +10,6 @@
 [ext_resource path="res://Scenes/characters/TIAG/Move.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/characters/TIAG/movingAround.gd" type="Script" id=9]
 
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 32, 48 )
-
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 2 )
-region = Rect2( 32, 0, 32, 48 )
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 2 )
-region = Rect2( 64, 0, 32, 48 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 2 )
-region = Rect2( 96, 0, 32, 48 )
-
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 2 )
 region = Rect2( 128, 0, 32, 48 )
@@ -42,17 +26,33 @@ region = Rect2( 192, 0, 32, 48 )
 atlas = ExtResource( 2 )
 region = Rect2( 224, 0, 32, 48 )
 
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 0, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 96, 0, 32, 48 )
+
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 9.31
-}, {
 "frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
 "loop": true,
 "name": "Move",
 "speed": 11.27
+}, {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 9.31
 } ]
 
 [sub_resource type="CircleShape2D" id=10]
@@ -68,6 +68,7 @@ wanderRange = 80
 [node name="AnimatedSprite" parent="." index="0"]
 position = Vector2( 0, -16 )
 frames = SubResource( 5 )
+frame = 2
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = null

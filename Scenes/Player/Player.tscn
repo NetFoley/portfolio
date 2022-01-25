@@ -11,6 +11,7 @@
 [ext_resource path="res://sprites/orc_warrior_run_anim_f3.png" type="Texture" id=9]
 [ext_resource path="res://sprites/orc_warrior_run_anim_f1.png" type="Texture" id=10]
 [ext_resource path="res://sprites/orc_warrior_idle_anim_f3.png" type="Texture" id=11]
+[ext_resource path="res://sprites/whiteMat.tres" type="Material" id=12]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -39,7 +40,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.45 ),
+"times": PoolRealArray( 0, 2 ),
 "transitions": PoolRealArray( 4.59476, 1 ),
 "update": 0,
 "values": [ Vector2( 0, -35 ), Vector2( 0, 0 ) ]
@@ -51,7 +52,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1.35, 1.45 ),
+"times": PoolRealArray( 0, 1.9, 2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 270.0, 270.0, 0.0 ]
@@ -63,7 +64,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 1.35 ),
+"times": PoolRealArray( 1.9 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -77,17 +78,15 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 1.35 ),
+"times": PoolRealArray( 0, 1.9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
 }
 
-[sub_resource type="CanvasItemMaterial" id=3]
-blend_mode = 1
-
 [sub_resource type="Animation" id=4]
 resource_name = "dead"
+step = 0.06
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:rotation_degrees")
 tracks/0/interp = 1
@@ -131,10 +130,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.03 ),
+"times": PoolRealArray( 0, 0.06 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ SubResource( 3 ), null ]
+"values": [ ExtResource( 12 ), null ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -276,7 +275,7 @@ script = ExtResource( 3 )
 
 [node name="AnimatedSprite" parent="." index="2"]
 frames = SubResource( 2 )
-frame = 1
+frame = 2
 
 [node name="CollisionShape2D" parent="." index="3"]
 position = Vector2( 1, 4 )

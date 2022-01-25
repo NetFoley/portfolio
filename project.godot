@@ -64,10 +64,25 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://StateMachine/StateMachine.gd"
 }, {
+"base": "NPC",
+"class": "alien",
+"language": "GDScript",
+"path": "res://Scenes/characters/AA/Alien.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "buttonUp",
+"language": "GDScript",
+"path": "res://Scenes/env/AA/buttonL.gd"
+}, {
 "base": "Character",
 "class": "gameObject",
 "language": "GDScript",
 "path": "res://Scenes/env/Object.gd"
+}, {
+"base": "InfoBlock",
+"class": "infoAA",
+"language": "GDScript",
+"path": "res://Scenes/characters/AA/InfoAA.gd"
 } ]
 _global_script_class_icons={
 "Character": "",
@@ -81,7 +96,10 @@ _global_script_class_icons={
 "RichTextMatrix": "",
 "State": "",
 "StateMachine": "",
-"gameObject": ""
+"alien": "",
+"buttonUp": "",
+"gameObject": "",
+"infoAA": ""
 }
 
 [application]
@@ -89,6 +107,11 @@ _global_script_class_icons={
 config/name="Portfolio"
 run/main_scene="res://lvl.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+popup="*res://UI/PopupPanel.gd"
+EVENTS="*res://UI/EVENTS.gd"
 
 [display]
 

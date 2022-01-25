@@ -49,7 +49,7 @@ size = 24
 font_data = ExtResource( 3 )
 
 [sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 106.5, 71.75 )
+extents = Vector2( 52.25, 71.75 )
 
 [node name="InfoTIAG" instance=ExtResource( 1 )]
 position = Vector2( 0, 12 )
@@ -82,12 +82,11 @@ custom_fonts/font = SubResource( 8 )
 text = "There is a Game
 2021
 Genre : Narratif et Puzzle
-Concepte et développement sur 
+Concept et développement sur 
 Unreal Engine 4 ( C++ )"
 align = 1
 valign = 3
-percent_visible = 0.0
-lines_skipped = 2
+lines_skipped = 5
 max_lines_visible = 4
 __meta__ = {
 "_edit_use_anchors_": false
@@ -96,5 +95,5 @@ __meta__ = {
 [node name="seeArea" type="Area2D" parent="." index="5"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="seeArea" index="0"]
-position = Vector2( 106.5, -0.25 )
+position = Vector2( 52, 1 )
 shape = SubResource( 9 )
