@@ -528,12 +528,12 @@ length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_scale")
 tracks/0/interp = 1
-tracks/0/loop_wrap = false
+tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 1, 4, 5 ),
-"transitions": PoolRealArray( 0.125, 1, 8.87655, 1 ),
+"transitions": PoolRealArray( 0.0504278, 1, 11.3137, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 1.5, 1.5 ), Vector2( 1.5, 1.5 ), Vector2( 0, 0 ) ]
 }
@@ -544,14 +544,11 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ Rect2( 0, 0, 0, 0 ) ],
 "method": "popup"
-}, {
-"args": [ false ],
-"method": "set_block_signals"
 } ]
 }
 
@@ -1344,7 +1341,6 @@ margin_bottom = 75.0
 rect_scale = Vector2( 1e-05, 1e-05 )
 mouse_filter = 1
 custom_styles/panel = SubResource( 54 )
-popup_exclusive = true
 script = ExtResource( 23 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1360,7 +1356,7 @@ margin_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Achievement !
-oh pute nounours"
+filler text"
 align = 1
 valign = 1
 autowrap = true
