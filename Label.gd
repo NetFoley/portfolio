@@ -7,11 +7,10 @@ func _ready() -> void:
 	var __ = EVENTS.connect("pop", self, "_on_pop")
 	
 #### BUILT-IN ####
-func _on_pop(text) -> void:
+func _on_pop(newtext) -> void:
 	print("pop")
-	if $Label != null:
-		$Label.text = text
-		$AnimationPlayer.play("pop")
+	text = newtext
+	$AnimationPlayer.play("pop")
 
 #### VIRTUALS ####
 

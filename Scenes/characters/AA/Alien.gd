@@ -69,5 +69,5 @@ func _on_hit_body_entered(body) -> void:
 	if body.has_method("alienDie") and body != self and !dead:
 		body.alienDie()
 		nbDeath = nbDeath + 1
-		if nbDeath == 10:
+		if nbDeath == 5:
 			EVENTS.emit_signal("pop", "Achievement ! \nSadisme")

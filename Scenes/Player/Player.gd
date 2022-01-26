@@ -33,7 +33,7 @@ func setCaught() -> void:
 	caught = true
 	canMove = false
 	nbCaught = nbCaught + 1
-	if nbCaught == 2:
+	if nbCaught == 3:
 		EVENTS.emit_signal("pop", "Achievement ! \nCarni Vore")
 
 func player_free() -> void:
